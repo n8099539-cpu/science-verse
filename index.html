@@ -1,120 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ScienceSphere - Home</title>
-    <style>
-        /* ===== Embedded CSS ===== */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScienceSphere - Home</title>
+<style>
+    /* ===== Embedded CSS ===== */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+    }
 
-        header {
-            background-color: #0073e6;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+    header {
+        background-color: #0073e6;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
 
+    header h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    section {
+        background-color: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    button {
+        padding: 10px 15px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #0073e6;
+        color: white;
+        font-size: 16px;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        background-color: #005bb5;
+    }
+
+    footer {
+        text-align: center;
+        background-color: #ddd;
+        padding: 15px;
+        margin-top: 20px;
+    }
+
+    /* ===== Responsive Styles ===== */
+    @media (max-width: 768px) {
         header h1 {
-            margin: 0;
+            font-size: 1.5em;
         }
-
         nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
+            display: block;
+            margin: 8px 0;
         }
+    }
 
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        section {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        button {
-            padding: 10px 15px;
-            margin-top: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: #0073e6;
-            color: white;
+    @media (max-width: 480px) {
+        body {
             font-size: 16px;
         }
-
-        button:hover {
-            background-color: #005bb5;
-        }
-
-        footer {
-            text-align: center;
-            background-color: #ddd;
+        section {
             padding: 15px;
-            margin-top: 20px;
         }
-    </style>
+        button {
+            width: 100%;
+        }
+    }
+</style>
 </head>
 <body>
-    <!-- ===== HTML Content ===== -->
-    <header>
-        <h1>ScienceSphere</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="facts.html">Facts</a>
-            <a href="discoveries.html">Discoveries</a>
-            <a href="quiz.html">Quiz</a>
-        </nav>
-    </header>
 
-    <main>
-        <section class="intro">
-            <h2>Explore, Learn, Discover!</h2>
-            <p>Welcome to ScienceSphere! Discover amazing science facts, learn about the greatest discoveries, inventions, and the brilliant minds behind them.</p>
-        </section>
+<header>
+    <h1>ScienceSphere</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="facts.html">Facts</a>
+        <a href="discoveries.html">Discoveries</a>
+        <a href="quiz.html">Quiz</a>
+    </nav>
+</header>
 
-        <section class="highlights">
-            <h3>Highlights</h3>
-            <ul>
-                <li>100+ Amazing Science Facts</li>
-                <li>Major Discoveries with Founders</li>
-                <li>200 Inventions and their Inventors</li>
-                <li>Interactive Quizzes to test your knowledge</li>
-            </ul>
-        </section>
+<main>
+    <section class="intro">
+        <h2>Explore, Learn, Discover!</h2>
+        <p>Welcome to ScienceSphere! Discover amazing science facts, learn about the greatest discoveries, inventions, and the brilliant minds behind them.</p>
+    </section>
 
-        <section class="cta">
-            <button id="showAlert">Click to Explore!</button>
-        </section>
-    </main>
+    <section class="highlights">
+        <h3>Highlights</h3>
+        <ul>
+            <li>100+ Amazing Science Facts</li>
+            <li>Major Discoveries with Founders</li>
+            <li>200 Inventions and their Inventors</li>
+            <li>Interactive Quizzes to test your knowledge</li>
+        </ul>
+    </section>
 
-    <footer>
-        <p>Website made by Nomaan Bin Ajaz</p>
-    </footer>
+    <section class="cta">
+        <button id="showAlert">Click to Explore!</button>
+    </section>
+</main>
 
-    <script>
-        // ===== Embedded JS =====
-        document.getElementById("showAlert").addEventListener("click", function() {
-            alert("Welcome to ScienceSphere! Explore Facts, Discoveries, Inventions, and Quizzes!");
-        });
-    </script>
+<footer>
+    <p>Website made by Nomaan Bin Ajaz</p>
+</footer>
+
+<script>
+    // ===== Embedded JS =====
+    document.getElementById("showAlert").addEventListener("click", function() {
+        alert("Welcome to ScienceSphere! Explore Facts, Discoveries, Inventions, and Quizzes!");
+    });
+</script>
+
 </body>
 </html>
