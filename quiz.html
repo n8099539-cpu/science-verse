@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ScienceSphere - Quiz</title>
+<style>
+    body { font-family: Arial; margin:0; background:#f4f4f4; color:#333;}
+    header { background:#0073e6; color:white; padding:20px; text-align:center;}
+    header h1 { margin:0;}
+    nav a { color:white; margin:0 15px; text-decoration:none; font-weight:bold;}
+    nav a:hover { text-decoration:underline;}
+    main { padding:20px;}
+    .question { background:white; padding:20px; margin-bottom:20px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+    button { padding:10px 15px; margin:5px 0; border:none; border-radius:5px; cursor:pointer; background:#0073e6; color:white;}
+    button:hover { background:#005bb5;}
+    footer { text-align:center; background:#ddd; padding:15px; margin-top:20px;}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Science Quiz</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="facts.html">Facts</a>
+        <a href="discoveries.html">Discoveries</a>
+        <a href="quiz.html">Quiz</a>
+    </nav>
+</header>
+
+<main>
+    <h2>Test your knowledge!</h2>
+
+    <!-- Questions container -->
+    <div id="quizContainer"></div>
+</main>
+
+<footer>
+    <p>Website made by Nomaan Bin Ajaz</p>
+</footer>
+
+<script>
+const quizData = [
+    { q: "Who proposed the theory of evolution?", options:["Charles Darwin","Isaac Newton","Albert Einstein","Louis Pasteur"], answer: 0 },
+    { q: "Who discovered radioactivity?", options:["Marie & Pierre Curie","Nikola Tesla","Michael Faraday","James Clerk Maxwell"], answer: 0 },
+    { q: "What is the chemical symbol for water?", options:["H2O","O2","CO2","NaCl"], answer: 0 },
+    { q: "Who formulated the laws of motion?", options:["Isaac Newton","Galileo Galilei","Albert Einstein","Nikola Tesla"], answer: 0 },
+    { q: "Which planet is known as the Red Planet?", options:["Mars","Venus","Jupiter","Saturn"], answer: 0 },
+    { q: "What is the powerhouse of the cell?", options:["Mitochondria","Nucleus","Ribosome","Chloroplast"], answer: 0 },
+    { q: "Speed of light is approximately?", options:["3x10^8 m/s","3x10^6 m/s","300 m/s","3x10^5 km/s"], answer: 0 },
+    { q: "Who discovered penicillin?", options:["Alexander Fleming","Louis Pasteur","Marie Curie","Robert Koch"], answer: 0 },
+    { q: "Who developed the theory of relativity?", options:["Albert Einstein","Isaac Newton","Galileo Galilei","Max Planck"], answer: 0 },
+    { q: "The study of living organisms is called?", options:["Biology","Physics","Chemistry","Astronomy"], answer: 0 },
+    { q: "Which planet has the most moons?", options:["Jupiter","Saturn","Earth","Mars"], answer: 0 },
+    { q: "DNA stands for?", options:["Deoxyribonucleic Acid","Deoxyribose Acid","Ribonucleic Acid","Dioxin Acid"], answer: 0 },
+    { q: "What is the chemical formula of table salt?", options:["NaCl","KCl","CaCO3","H2O"], answer: 0 },
+    { q: "Who invented the telephone?", options:["Alexander Graham Bell","Thomas Edison","Nikola Tesla","Galileo"], answer: 0 },
+    { q: "Which gas do plants absorb?", options:["Carbon Dioxide","Oxygen","Nitrogen","Hydrogen"], answer: 0 },
+    { q: "The first artificial satellite was?", options:["Sputnik","Apollo 11","Hubble","Voyager 1"], answer: 0 },
+    { q: "Which scientist proposed heliocentrism?", options:["Nicolaus Copernicus","Galileo Galilei","Isaac Newton","Ptolemy"], answer: 0 },
+    { q: "Electric current is measured in?", options:["Amperes","Volts","Ohms","Watts"], answer: 0 },
+    { q: "What is the nearest star to Earth?", options:["Sun","Alpha Centauri","Sirius","Betelgeuse"], answer: 0 },
+    { q: "Which organ detoxifies chemicals in our body?", options:["Liver","Kidney","Heart","Lungs"], answer: 0 },
+    { q: "Who is the father of modern physics?", options:["Galileo Galilei","Isaac Newton","Albert Einstein","Stephen Hawking"], answer: 0 },
+    { q: "Which planet is known for its rings?", options:["Saturn","Jupiter","Neptune","Uranus"], answer: 0 },
+    { q: "The smallest particle of matter is?", options:["Atom","Molecule","Electron","Proton"], answer: 0 },
+    { q: "What does O2 represent?", options:["Oxygen","Water","Carbon Dioxide","Hydrogen"], answer: 0 },
+    { q: "Who discovered the electron?", options:["J.J. Thomson","Albert Einstein","Marie Curie","Isaac Newton"], answer: 0 },
+    { q: "Which vitamin is produced by sunlight?", options:["Vitamin D","Vitamin C","Vitamin A","Vitamin K"], answer: 0 },
+    { q: "What is the main gas in the Earth's atmosphere?", options:["Nitrogen","Oxygen","Carbon Dioxide","Argon"], answer: 0 },
+    { q: "The formula E=mc² was proposed by?", options:["Albert Einstein","Isaac Newton","Niels Bohr","Galileo"], answer: 0 },
+    { q: "Which organ pumps blood?", options:["Heart","Liver","Kidney","Lungs"], answer: 0 },
+    { q: "Who invented the light bulb?", options:["Thomas Edison","Nikola Tesla","Alexander Graham Bell","Benjamin Franklin"], answer: 0 },
+    { q: "Which planet is the hottest?", options:["Venus","Mercury","Mars","Jupiter"], answer: 0 },
+    { q: "What is H2SO4?", options:["Sulfuric Acid","Hydrochloric Acid","Nitric Acid","Carbonic Acid"], answer: 0 },
+    { q: "The Earth revolves around?", options:["Sun","Moon","Mars","Jupiter"], answer: 0 },
+    { q: "Who discovered gravity?", options:["Isaac Newton","Albert Einstein","Galileo","Copernicus"], answer: 0 },
+    { q: "Which gas do humans exhale?", options:["Carbon Dioxide","Oxygen","Nitrogen","Helium"], answer: 0 },
+    { q: "Water boils at?", options:["100°C","90°C","80°C","120°C"], answer: 0 },
+    { q: "The chemical symbol for gold?", options:["Au","Ag","Fe","G"], answer: 0 },
+    { q: "Who discovered X-rays?", options:["Wilhelm Roentgen","Marie Curie","Isaac Newton","Albert Einstein"], answer: 0 },
+    { q: "The main component of the sun?", options:["Hydrogen","Oxygen","Helium","Carbon"], answer: 0 },
+    { q: "Which planet is known as the Earth's twin?", options:["Venus","Mars","Mercury","Saturn"], answer: 0 },
+    { q: "Speed of sound is fastest in?", options:["Water","Air","Vacuum","Steel"], answer: 0 },
+    { q: "The largest organ in the human body?", options:["Skin","Liver","Heart","Brain"], answer: 0 },
+    { q: "Who proposed the Big Bang Theory?", options:["Georges Lemaître","Isaac Newton","Albert Einstein","Edwin Hubble"], answer: 0 },
+    { q: "Which element has atomic number 1?", options:["Hydrogen","Helium","Oxygen","Carbon"], answer: 0 },
+    { q: "What is the hardest natural substance?", options:["Diamond","Gold","Iron","Quartz"], answer: 0 },
+    { q: "Who discovered oxygen?", options:["Joseph Priestley","Marie Curie","Isaac Newton","Dmitri Mendeleev"], answer: 0 },
+    { q: "The SI unit of force?", options:["Newton","Joule","Watt","Pascal"], answer: 0 },
+    { q: "Which planet is largest?", options:["Jupiter","Saturn","Neptune","Earth"], answer: 0 },
+    { q: "Who developed the first vaccine?", options:["Edward Jenner","Louis Pasteur","Alexander Fleming","Robert Koch"], answer: 0 },
+    { q: "Which gas causes acid rain?", options:["Sulfur Dioxide","Carbon Dioxide","Oxygen","Nitrogen"], answer: 0 },
+    { q: "Which particle has negative charge?", options:["Electron","Proton","Neutron","Photon"], answer: 0 },
+    { q: "Who invented the first computer?", options:["Charles Babbage","Alan Turing","Steve Jobs","Bill Gates"], answer: 0 },
+    { q: "What is the study of stars called?", options:["Astronomy","Astrology","Physics","Geology"], answer: 0 },
+    { q: "Which planet rotates backwards?", options:["Venus","Mars","Jupiter","Mercury"], answer: 0 },
+];
+
+const quizContainer = document.getElementById("quizContainer");
+
+quizData.forEach((item, index)=>{
+    const div = document.createElement("div");
+    div.className="question";
+    div.innerHTML = `<p>${index+1}. ${item.q}</p>`;
+    item.options.forEach((opt,optIndex)=>{
+        const btn = document.createElement("button");
+        btn.textContent = opt;
+        btn.onclick = ()=>{ 
+            if(optIndex===item.answer){
+                btn.style.backgroundColor='green';
+                alert('Correct!');
+            } else {
+                btn.style.backgroundColor='red';
+                alert('Wrong! Try again.');
+            }
+        };
+        div.appendChild(btn);
+    });
+    quizContainer.appendChild(div);
+});
+</script>
+</body>
+</html>
+
