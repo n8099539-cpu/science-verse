@@ -1,21 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ScienceSphere - Discoveries</title>
-    <style>
-        body { font-family: Arial; margin: 0; background:#f4f4f4; color:#333;}
-        header { background:#0073e6; color:white; padding:20px; text-align:center;}
-        header h1 { margin:0;}
-        nav a { color:white; margin:0 15px; text-decoration:none; font-weight:bold;}
-        nav a:hover { text-decoration:underline;}
-        main { padding:20px;}
-        ul { background:white; padding:20px; margin-bottom:20px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
-        ul li { margin-bottom:10px;}
-        footer { text-align:center; background:#ddd; padding:15px; margin-top:20px;}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScienceSphere - Discoveries</title>
+<style>
+    /* ===== Embedded CSS ===== */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    header {
+        background-color: #0073e6;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    section {
+        background-color: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 12px;
+    }
+
+    footer {
+        text-align: center;
+        background-color: #ddd;
+        padding: 15px;
+        margin-top: 20px;
+    }
+
+    /* ===== Responsive Styles ===== */
+    @media (max-width: 768px) {
+        header h1 {
+            font-size: 1.5em;
+        }
+        nav a {
+            display: block;
+            margin: 8px 0;
+        }
+    }
+
+    @media (max-width: 480px) {
+        body {
+            font-size: 16px;
+        }
+        section {
+            padding: 15px;
+        }
+    }
+</style>
 </head>
 <body>
+
 <header>
     <h1>Major Discoveries</h1>
     <nav>
@@ -27,25 +102,29 @@
 </header>
 
 <main>
-    <ul>
-        <li><strong>Isaac Newton (1687):</strong> Law of Universal Gravitation.</li>
-        <li><strong>Charles Darwin (1859):</strong> Evolution by Natural Selection.</li>
-        <li><strong>Louis Pasteur & Robert Koch (1860s–1880s):</strong> Germ Theory of Disease.</li>
-        <li><strong>Max Planck, Niels Bohr, Heisenberg (Early 1900s):</strong> Quantum Mechanics.</li>
-        <li><strong>Nicolaus Copernicus (1543):</strong> Heliocentrism.</li>
-        <li><strong>Dmitri Mendeleev (1869):</strong> Periodic Table.</li>
-        <li><strong>Marie & Pierre Curie (1898):</strong> Radioactivity.</li>
-        <li><strong>Watson, Crick & Franklin (1953):</strong> DNA Structure.</li>
-        <li><strong>Michael Faraday & Maxwell (1800s):</strong> Electromagnetism.</li>
-        <li><strong>Alfred Wegener (1912):</strong> Continental Drift.</li>
-        <li><strong>Georges Lemaître (1927):</strong> Big Bang Theory.</li>
-        <!-- add more discoveries as needed -->
-    </ul>
+    <section>
+        <ul>
+            <li><strong>Isaac Newton (1687):</strong> Law of Universal Gravitation – Every mass attracts every other mass in the universe.</li>
+            <li><strong>Charles Darwin (1859):</strong> Evolution by Natural Selection – Traits that help organisms survive become common in populations.</li>
+            <li><strong>Louis Pasteur & Robert Koch (1860s–1880s):</strong> Germ Theory of Disease – Invisible microorganisms cause disease; sterilization prevents illness.</li>
+            <li><strong>Max Planck, Niels Bohr, Werner Heisenberg (Early 1900s):</strong> Quantum Mechanics – Atomic-level rules differ; energy comes in discrete quanta.</li>
+            <li><strong>Nicolaus Copernicus (1543):</strong> Heliocentrism – Earth and planets revolve around the Sun.</li>
+            <li><strong>Dmitri Mendeleev (1869):</strong> Periodic Table – Elements arranged by atomic weight show repeating chemical properties.</li>
+            <li><strong>Marie & Pierre Curie (1898):</strong> Radioactivity – Some elements emit energy; atoms can transform into energy.</li>
+            <li><strong>James Watson, Francis Crick & Rosalind Franklin (1953):</strong> DNA Double Helix – The blueprint of life stored in chemical sequences (A,T,C,G).</li>
+            <li><strong>Michael Faraday & James Clerk Maxwell (1800s):</strong> Electromagnetism – Electricity, magnetism, and light are manifestations of the same field.</li>
+            <li><strong>Alfred Wegener (1912):</strong> Continental Drift – Continents were once a single landmass (Pangaea) and drift apart over time.</li>
+            <li><strong>Georges Lemaître (1927):</strong> Big Bang Theory – Universe started from a single dense point and has been expanding ever since.</li>
+            <!-- You can add more discoveries here -->
+        </ul>
+    </section>
 </main>
 
 <footer>
     <p>Website made by Nomaan Bin Ajaz</p>
 </footer>
+
 </body>
 </html>
+
 
