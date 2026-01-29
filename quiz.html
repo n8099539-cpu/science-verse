@@ -3,94 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScienceSphere - Facts</title>
+<title>ScienceSphere - Quiz</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-        color: #333;
-    }
-
-    header {
-        background-color: #0073e6;
-        color: white;
-        padding: 20px;
-        text-align: center;
-    }
-
-    header h1 {
-        margin: 0;
-        font-size: 2em;
-    }
-
-    nav {
-        margin-top: 10px;
-    }
-
-    nav a {
-        color: white;
-        margin: 0 15px;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    nav a:hover {
-        text-decoration: underline;
-    }
-
-    main {
-        padding: 20px;
-    }
-
-    section {
-        background-color: white;
-        padding: 20px;
-        margin-bottom: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    ul {
-        padding-left: 20px;
-    }
-
-    li {
-        margin-bottom: 10px;
-    }
-
-    footer {
-        text-align: center;
-        background-color: #ddd;
-        padding: 15px;
-        margin-top: 20px;
-    }
-
-    @media (max-width: 768px) {
-        header h1 {
-            font-size: 1.5em;
-        }
-        nav a {
-            display: block;
-            margin: 8px 0;
-        }
-    }
-
-    @media (max-width: 480px) {
-        body {
-            font-size: 16px;
-        }
-        section {
-            padding: 15px;
-        }
-    }
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f4; color:#333;}
+    header { background:#0073e6; color:white; padding:20px; text-align:center;}
+    header h1 { margin:0;}
+    nav a { color:white; margin:0 15px; text-decoration:none; font-weight:bold;}
+    nav a:hover { text-decoration:underline;}
+    main { padding:20px;}
+    .question { background:white; padding:20px; margin-bottom:20px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+    button { padding:10px 15px; margin:5px 0; border:none; border-radius:5px; cursor:pointer; background:#0073e6; color:white; transition:0.3s;}
+    button:hover { background:#005bb5;}
+    footer { text-align:center; background:#ddd; padding:15px; margin-top:20px;}
+    @media (max-width:768px){ nav a{display:block; margin:8px 0;} header h1{font-size:1.5em;} }
+    @media (max-width:480px){ body{font-size:16px;} button{width:100%;} .question{padding:15px;} }
 </style>
 </head>
 <body>
 
 <header>
-    <h1>Amazing Science Facts</h1>
+    <h1>Science Quiz</h1>
     <nav>
         <a href="index.html">Home</a>
         <a href="facts.html">Facts</a>
@@ -100,25 +32,92 @@
 </header>
 
 <main>
-    <section>
-        <ul>
-            <!-- Space & Physics -->
-            <li>Space is completely silent. Sound waves need a medium to travel.</li>
-            <li>A day on Venus is longer than a year on Venus.</li>
-            <li>Neutron stars are dense. A teaspoon would weigh 6 billion tons.</li>
-            <li>Light takes 8 minutes 19 seconds to travel from Sun to Earth.</li>
-            <li>There are more stars than grains of sand on all Earth beaches.</li>
-            <li>Footprints on the Moon last 100 million years due to no wind.</li>
-            <li>Sunset on Mars appears blue.</li>
-            <li>Jupiter has 95 confirmed moons.</li>
-            <li>Saturn could float in water; it's less dense than water.</li>
-            <li>Venus is the hottest planet due to thick atmosphere trapping heat.</li>
-            <li>Time passes slower near massive objects (gravitational time dilation).</li>
-            <li>The universe is expanding faster than the speed of light.</li>
-            <li>Black holes can "spaghettify" objects due to tidal gravity.</li>
-            <li>Glass is a solid, not a slow-moving liquid.</li>
-            <li>Water can boil and freeze at the same time (Triple Point).</li>
-            <li>Helium cannot be frozen by cooling alone; pressure is required.</li>
-            <li>Light has no mass but has momentum.</li>
-            <li>Sound travels 4x faster in water than air.</li>
-            <li>Eiffel Tower grows 15 cm in summer due to
+    <h2>Test your knowledge!</h2>
+    <div id="quizContainer"></div>
+</main>
+
+<footer>
+    <p>Website made by Nomaan Bin Ajaz</p>
+</footer>
+
+<script>
+const quizData = [
+    {q:"Who proposed the theory of evolution?",options:["Charles Darwin","Isaac Newton","Albert Einstein","Louis Pasteur"],answer:0},
+    {q:"Who discovered radioactivity?",options:["Marie & Pierre Curie","Nikola Tesla","Michael Faraday","James Clerk Maxwell"],answer:0},
+    {q:"What is the chemical symbol for water?",options:["H2O","O2","CO2","NaCl"],answer:0},
+    {q:"Who formulated the laws of motion?",options:["Isaac Newton","Galileo Galilei","Albert Einstein","Nikola Tesla"],answer:0},
+    {q:"Which planet is known as the Red Planet?",options:["Mars","Venus","Jupiter","Saturn"],answer:0},
+    {q:"What is the powerhouse of the cell?",options:["Mitochondria","Nucleus","Ribosome","Chloroplast"],answer:0},
+    {q:"Speed of light is approximately?",options:["3x10^8 m/s","3x10^6 m/s","300 m/s","3x10^5 km/s"],answer:0},
+    {q:"Who discovered penicillin?",options:["Alexander Fleming","Louis Pasteur","Marie Curie","Robert Koch"],answer:0},
+    {q:"Who developed the theory of relativity?",options:["Albert Einstein","Isaac Newton","Galileo Galilei","Max Planck"],answer:0},
+    {q:"The study of living organisms is called?",options:["Biology","Physics","Chemistry","Astronomy"],answer:0},
+    {q:"Which gas do plants absorb for photosynthesis?",options:["Carbon Dioxide","Oxygen","Nitrogen","Helium"],answer:0},
+    {q:"What particle has a negative charge?",options:["Electron","Proton","Neutron","Photon"],answer:0},
+    {q:"Which planet has rings?",options:["Saturn","Mars","Venus","Mercury"],answer:0},
+    {q:"Who is the father of modern chemistry?",options:["Antoine Lavoisier","Isaac Newton","Albert Einstein","Galileo Galilei"],answer:0},
+    {q:"What is the most abundant gas in Earth's atmosphere?",options:["Nitrogen","Oxygen","Carbon Dioxide","Hydrogen"],answer:0},
+    {q:"Which organ filters blood in humans?",options:["Kidneys","Heart","Lungs","Liver"],answer:0},
+    {q:"What force keeps us on the ground?",options:["Gravity","Magnetism","Friction","Inertia"],answer:0},
+    {q:"Which scientist discovered the electron?",options:["J.J. Thomson","Isaac Newton","Albert Einstein","Marie Curie"],answer:0},
+    {q:"Which organ produces insulin?",options:["Pancreas","Liver","Heart","Kidney"],answer:0},
+    {q:"What is the center of an atom called?",options:["Nucleus","Electron","Proton","Neutron"],answer:0},
+    {q:"What is Hubble known for?",options:["Expanding Universe","Gravity","DNA Structure","Penicillin"],answer:0},
+    {q:"Which blood cells fight infection?",options:["White Blood Cells","Red Blood Cells","Platelets","Plasma"],answer:0},
+    {q:"What is Earth's largest planet?",options:["Jupiter","Saturn","Earth","Neptune"],answer:0},
+    {q:"Which element is needed for bones?",options:["Calcium","Iron","Sodium","Potassium"],answer:0},
+    {q:"Who invented the first telescope?",options:["Galileo Galilei","Isaac Newton","Albert Einstein","Marie Curie"],answer:0},
+    {q:"Which gas is used in balloons to float?",options:["Helium","Hydrogen","Oxygen","Nitrogen"],answer:0},
+    {q:"What type of energy is stored in food?",options:["Chemical Energy","Kinetic Energy","Heat","Light"],answer:0},
+    {q:"Which planet is closest to the Sun?",options:["Mercury","Venus","Earth","Mars"],answer:0},
+    {q:"Who discovered gravity?",options:["Isaac Newton","Albert Einstein","Galileo Galilei","Nikola Tesla"],answer:0},
+    {q:"Which organ pumps blood?",options:["Heart","Lungs","Kidney","Liver"],answer:0},
+    {q:"Which vitamin is produced by sunlight?",options:["Vitamin D","Vitamin C","Vitamin A","Vitamin B12"],answer:0},
+    {q:"Which scientist discovered DNA structure?",options:["Watson & Crick","Darwin","Newton","Einstein"],answer:0},
+    {q:"Which planet is known for its blue color?",options:["Neptune","Mars","Venus","Jupiter"],answer:0},
+    {q:"What is freezing point of water?",options:["0°C","100°C","32°C","-10°C"],answer:0},
+    {q:"Which is the smallest unit of life?",options:["Cell","Atom","Molecule","Organ"],answer:0},
+    {q:"Which gas do humans exhale?",options:["Carbon Dioxide","Oxygen","Nitrogen","Hydrogen"],answer:0},
+    {q:"Who invented the light bulb?",options:["Thomas Edison","Nikola Tesla","Galileo","Newton"],answer:0},
+    {q:"What is the hardest natural substance?",options:["Diamond","Gold","Iron","Silver"],answer:0},
+    {q:"Which planet has the Great Red Spot?",options:["Jupiter","Saturn","Mars","Venus"],answer:0},
+    {q:"Which organ helps you breathe?",options:["Lungs","Heart","Kidney","Liver"],answer:0},
+    {q:"Who discovered the electron?",options:["J.J. Thomson","Isaac Newton","Faraday","Curie"],answer:0},
+    {q:"What is the chemical formula for table salt?",options:["NaCl","KCl","CaCO3","H2O"],answer:0},
+    {q:"Which planet is the largest?",options:["Jupiter","Saturn","Earth","Neptune"],answer:0},
+    {q:"Which element is needed for blood?",options:["Iron","Calcium","Sodium","Potassium"],answer:0},
+    {q:"What is the unit of electric current?",options:["Ampere","Volt","Ohm","Watt"],answer:0},
+    {q:"Which scientist explained relativity?",options:["Einstein","Newton","Darwin","Tesla"],answer:0},
+    {q:"What organ stores bile?",options:["Gallbladder","Liver","Kidney","Stomach"],answer:0},
+    {q:"Which gas is essential for respiration?",options:["Oxygen","Nitrogen","Carbon Dioxide","Helium"],answer:0},
+    {q:"Which planet is farthest from the Sun?",options:["Neptune","Mars","Jupiter","Saturn"],answer:0},
+    {q:"Which blood cells carry oxygen?",options:["Red Blood Cells","White Blood Cells","Platelets","Plasma"],answer:0},
+    {q:"Who discovered the law of universal gravitation?",options:["Newton","Einstein","Tesla","Galileo"],answer:0},
+    {q:"Which organ detoxifies chemicals?",options:["Liver","Kidney","Lungs","Heart"],answer:0},
+    {q:"Which element is most abundant in Earth's crust?",options:["Oxygen","Silicon","Iron","Aluminum"],answer:0},
+    {q:"Which type of galaxy is the Milky Way?",options:["Spiral","Elliptical","Irregular","Lenticular"],answer:0},
+    {q:"Which organ produces bile?",options:["Liver","Gallbladder","Kidney","Heart"],answer:0},
+    {q:"What is the main gas in the Sun?",options:["Hydrogen","Helium","Oxygen","Carbon Dioxide"],answer:0}
+];
+
+// Generate quiz dynamically
+const container = document.getElementById("quizContainer");
+quizData.forEach((item,index)=>{
+    const div = document.createElement("div");
+    div.className = "question";
+    div.innerHTML = `<p>${index+1}. ${item.q}</p>`;
+    item.options.forEach((opt,optIndex)=>{
+        const btn = document.createElement("button");
+        btn.textContent = opt;
+        btn.onclick = ()=>{ 
+            if(optIndex===item.answer){ btn.style.backgroundColor='green'; alert('Correct!'); }
+            else { btn.style.backgroundColor='red'; alert('Wrong! Try again.'); }
+        };
+        div.appendChild(btn);
+    });
+    container.appendChild(div);
+});
+</script>
+
+</body>
+</html>
